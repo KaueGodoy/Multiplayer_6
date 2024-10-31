@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38273385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8491777620354703484, guid: c836b475883a8d4449f920bc50230546, type: 3}
+  m_PrefabInstance: {fileID: 2057196472945263523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129054087
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +137,7 @@ GameObject:
   - component: {fileID: 129054089}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,6 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1626696825}
+  - component: {fileID: 1626696826}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -733,6 +739,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 483569142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626696826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626696824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e683399bbdefe08468ca5000f654471e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1679972917
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,13 +839,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8491777620354703484, guid: c836b475883a8d4449f920bc50230546, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057196472945263527}
   m_SourcePrefab: {fileID: 100100000, guid: c836b475883a8d4449f920bc50230546, type: 3}
 --- !u!4 &2057196472945263524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1224683721571669823, guid: c836b475883a8d4449f920bc50230546, type: 3}
   m_PrefabInstance: {fileID: 2057196472945263523}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2057196472945263527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38273385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ab8a5fac8bceb45bf454864c1c5004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
+  _jumpForce: 5
+  _isGrounded: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

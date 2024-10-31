@@ -1,16 +1,33 @@
+using System;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static PlayerInput Instance { get; private set; }
+
+    public event EventHandler OnPlayerJump;
+
+    private InputSystem_Actions _playerInputSystem;
+
+    private void Awake()
     {
-        
+        Instance = this;
+
+        _playerInputSystem = new InputSystem_Actions();
+        _playerInputSystem.Enable();
+
+        _playerInputSystem.Player.Jump.performed += Jump_performed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        
+        OnPlayerJump?.Invoke(this, EventArgs.Empty);
+    }
+
+    public Vector2 GetInputMovementVector()
+    {
+        Vector2 input = _playerInputSystem.Player.Move.ReadValue<Vector2>();
+
+        return input;
     }
 }
