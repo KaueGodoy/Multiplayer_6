@@ -26,8 +26,14 @@ public class PlayerInput : MonoBehaviour
 
     public Vector2 GetInputMovementVector()
     {
-        Vector2 input = _playerInputSystem.Player.Move.ReadValue<Vector2>();
+        Vector2 inputVector = _playerInputSystem.Player.Move.ReadValue<Vector2>();
+        inputVector = inputVector.normalized;
+        return inputVector;
+    }
 
-        return input;
+    private void OnDestroy()
+    {
+        _playerInputSystem.Player.Jump.performed -= Jump_performed;
+        _playerInputSystem.Dispose();
     }
 }

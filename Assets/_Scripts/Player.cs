@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
@@ -32,21 +31,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         Move();
     }
 
     private void Move()
     {
         Vector2 input = PlayerInput.Instance.GetInputMovementVector();
-        Vector2 moveDirection = new Vector2(input.x * _moveSpeed, _rb.linearVelocity.y).normalized;
+        Vector3 moveDir = new Vector3(input.x, 0f, input.y);
 
-        _rb.AddForce(moveDirection);
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime);
+
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
