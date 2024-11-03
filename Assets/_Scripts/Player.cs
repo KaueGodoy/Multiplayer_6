@@ -37,11 +37,11 @@ public class Player : MonoBehaviour
     private void Move()
     {
         Vector2 input = PlayerInput.Instance.GetInputMovementVector();
-        Vector3 moveDir = new Vector3(input.x, 0f, input.y);
+        Vector2 moveDirection = new Vector2(input.x * _moveSpeed, _rb.linearVelocity.y);
 
-        float rotateSpeed = 10f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        _rb.linearVelocity = moveDirection;
     }
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
