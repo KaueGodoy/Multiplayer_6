@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded = false;
 
+    [Header("Ground")]
+    [SerializeField] private float groundDistance = 0.1f; // Distance to check for ground
+    [SerializeField] private LayerMask groundLayer; // 
+
     private Rigidbody2D _rb;
 
     private void Awake()
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        CheckIfGrounded();
         Move();
     }
 
@@ -42,13 +47,20 @@ public class Player : MonoBehaviour
         _rb.linearVelocity = moveDirection;
     }
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void CheckIfGrounded()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = true;
-        }
+        // Cast a ray downward from the character's position to check for ground
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundLayer);
+
+        // Set _isGrounded to true if the ray hits a ground object
+        _isGrounded = hit.collider != null;
+    }
+
+    // Optional: For visualization in the editor
+    private void OnDrawGizmos()
+    {
+        // Draw the ground detection ray in the editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundDistance);
     }
 }

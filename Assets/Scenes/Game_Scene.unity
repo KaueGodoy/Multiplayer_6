@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 129054088}
   - component: {fileID: 129054090}
   - component: {fileID: 129054089}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tile
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -826,6 +826,10 @@ PrefabInstance:
     - target: {fileID: 1224683721571669823, guid: c836b475883a8d4449f920bc50230546, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228216579787915900, guid: c836b475883a8d4449f920bc50230546, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8491777620354703484, guid: c836b475883a8d4449f920bc50230546, type: 3}
       propertyPath: m_Name
