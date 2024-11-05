@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
     public static PlayerInput Instance { get; private set; }
 
     public event EventHandler OnPlayerJump;
+    public event EventHandler OnPlayerSkill;
 
     private InputSystem_Actions _playerInputSystem;
 
@@ -17,6 +18,12 @@ public class PlayerInput : MonoBehaviour
         _playerInputSystem.Enable();
 
         _playerInputSystem.Player.Jump.performed += Jump_performed;
+        _playerInputSystem.Player.Skill.performed += Skill_performed;
+    }
+
+    private void Skill_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnPlayerSkill?.Invoke(this, EventArgs.Empty);
     }
 
     private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

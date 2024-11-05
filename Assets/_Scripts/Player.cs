@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 2f;
+    [SerializeField] private float _boostedSpeed = 5f; // Speed when boosted
+    [SerializeField] private float _boostDuration = 2f; // Duration of the speed boost
+    private bool _isBoosted = false; // To track if the player is currently boosted
 
     [Header("Jump")]
     [SerializeField] private float _jumpForce;
@@ -23,6 +27,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         PlayerInput.Instance.OnPlayerJump += PlayerInput_OnPlayerJump;
+        PlayerInput.Instance.OnPlayerSkill += PlayerInput_OnPlayerSkill;
+    }
+
+    private void PlayerInput_OnPlayerSkill(object sender, System.EventArgs e)
+    {
+        if (_isBoosted) return;
+
+        StartCoroutine(SpeedBoost());
     }
 
     private void PlayerInput_OnPlayerJump(object sender, System.EventArgs e)
@@ -39,10 +51,18 @@ public class Player : MonoBehaviour
         Move();
     }
 
+    private IEnumerator SpeedBoost()
+    {
+        _isBoosted = true;
+        yield return new WaitForSeconds(_boostDuration);
+        _isBoosted = false;
+    }
+
     private void Move()
     {
         Vector2 input = PlayerInput.Instance.GetInputMovementVector();
-        Vector2 moveDirection = new Vector2(input.x * _moveSpeed, _rb.linearVelocity.y);
+        float currentSpeed = _isBoosted ? _boostedSpeed : _moveSpeed; // Use boosted speed if active
+        Vector2 moveDirection = new Vector2(input.x * currentSpeed, _rb.linearVelocity.y);
 
         _rb.linearVelocity = moveDirection;
     }

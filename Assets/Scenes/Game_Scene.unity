@@ -828,8 +828,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4228216579787915900, guid: c836b475883a8d4449f920bc50230546, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 8
+      propertyPath: _isGrounded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228216579787915900, guid: c836b475883a8d4449f920bc50230546, type: 3}
+      propertyPath: groundDistance
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8491777620354703484, guid: c836b475883a8d4449f920bc50230546, type: 3}
       propertyPath: m_Name

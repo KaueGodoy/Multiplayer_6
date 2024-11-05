@@ -208,5 +208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
+  _boostedSpeed: 5
+  _boostDuration: 2
   _jumpForce: 5
   _isGrounded: 0
+  groundDistance: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
