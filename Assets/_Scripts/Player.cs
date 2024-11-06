@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
     {
         PlayerInput.Instance.OnPlayerJump += PlayerInput_OnPlayerJump;
         PlayerInput.Instance.OnPlayerSkill += PlayerInput_OnPlayerSkill;
+        PlayerInput.Instance.OnPlayerUlt += PlayerInput_OnPlayerUlt; ;
+    }
+
+    private void PlayerInput_OnPlayerUlt(object sender, System.EventArgs e)
+    {
+       
     }
 
     private void PlayerInput_OnPlayerSkill(object sender, System.EventArgs e)
