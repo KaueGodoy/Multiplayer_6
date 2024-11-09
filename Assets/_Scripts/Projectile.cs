@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Public variable for setting the bullet speed
-    public float speed = 20f;
+    [SerializeField] private float _speed = 20f;
+    private Rigidbody2D _rb;
 
-    private Rigidbody rb;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        // Get the Rigidbody component attached to the bullet
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
-        // Set the velocity to move forward in the bullet's local forward direction
-        rb.linearVelocity = transform.forward * speed;
+    private void Start()
+    {
+        // Move the projectile in the direction of the object's right
+        _rb.linearVelocity = transform.right * _speed;
     }
 }
