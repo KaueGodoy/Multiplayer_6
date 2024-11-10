@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
 
         _playerInputSystem.Player.Jump.performed += Jump_performed;
         _playerInputSystem.Player.Skill.performed += Skill_performed;
-        _playerInputSystem.Player.Ult.performed += Ult_performed; ;
+        _playerInputSystem.Player.Ult.performed += Ult_performed;
     }
 
     private void Ult_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

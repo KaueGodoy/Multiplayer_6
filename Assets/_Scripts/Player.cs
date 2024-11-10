@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("Ground")]
     [SerializeField] private float groundDistance = 0.1f; // Distance to check for ground
     [SerializeField] private LayerMask groundLayer; // 
+    [Header("Shooting")]
+    [SerializeField] private Transform _projectileTransform;
+    [SerializeField] private GameObject _bulletPrefab;
 
     private Rigidbody2D _rb;
 
@@ -28,12 +31,12 @@ public class Player : MonoBehaviour
     {
         PlayerInput.Instance.OnPlayerJump += PlayerInput_OnPlayerJump;
         PlayerInput.Instance.OnPlayerSkill += PlayerInput_OnPlayerSkill;
-        PlayerInput.Instance.OnPlayerUlt += PlayerInput_OnPlayerUlt; ;
+        PlayerInput.Instance.OnPlayerUlt += PlayerInput_OnPlayerUlt;
     }
 
     private void PlayerInput_OnPlayerUlt(object sender, System.EventArgs e)
     {
-       
+        Instantiate(_bulletPrefab, _projectileTransform.position, _projectileTransform.rotation);
     }
 
     private void PlayerInput_OnPlayerSkill(object sender, System.EventArgs e)
