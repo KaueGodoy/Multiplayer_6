@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
 
     private Rigidbody2D _rb;
+    private int facingDirection = 1; // 1 = facing right, -1 = facing left
 
     private void Awake()
     {
@@ -74,7 +75,28 @@ public class Player : MonoBehaviour
         Vector2 moveDirection = new Vector2(input.x * currentSpeed, _rb.linearVelocity.y);
 
         _rb.linearVelocity = moveDirection;
+
+        // Update facing direction based on input
+        if (input.x > 0 && facingDirection != 1)
+        {
+            facingDirection = 1;
+            FlipCharacter();
+        }
+        else if (input.x < 0 && facingDirection != -1)
+        {
+            facingDirection = -1;
+            FlipCharacter();
+        }
     }
+
+    private void FlipCharacter()
+    {
+        // Flip character by inverting the X scale
+        Vector3 scale = transform.localScale;
+        scale.x = facingDirection; // Set scale.x based on facing direction (1 for right, -1 for left)
+        transform.localScale = scale;
+    }
+
 
     private void CheckIfGrounded()
     {
