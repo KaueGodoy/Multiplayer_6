@@ -48,6 +48,8 @@ public class PlayerInput : MonoBehaviour
     private void OnDestroy()
     {
         _playerInputSystem.Player.Jump.performed -= Jump_performed;
+        _playerInputSystem.Player.Skill.performed -= Skill_performed;
+        _playerInputSystem.Player.Ult.performed -= Ult_performed;
         _playerInputSystem.Dispose();
     }
 }

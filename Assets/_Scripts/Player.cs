@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundDistance = 0.1f; // Distance to check for ground
     [SerializeField] private LayerMask groundLayer; // 
     [Header("Shooting")]
-    [SerializeField] private Transform _projectileTransform;
+    [SerializeField] private Transform _projectileOrigin;
     [SerializeField] private GameObject _bulletPrefab;
 
     private Rigidbody2D _rb;
@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
 
     private void PlayerInput_OnPlayerUlt(object sender, System.EventArgs e)
     {
-        Instantiate(_bulletPrefab, _projectileTransform.position, _projectileTransform.rotation);
+        GameObject projectile = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+        float direction = transform.localScale.x;
+        projectile.gameObject.GetComponent<Projectile>().SetDirection(direction);
     }
 
     private void PlayerInput_OnPlayerSkill(object sender, System.EventArgs e)

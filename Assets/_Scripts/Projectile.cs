@@ -10,9 +10,9 @@ public class Projectile : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    public void SetDirection(float direction)
     {
-        // Move the projectile in the direction of the object's right
-        _rb.linearVelocity = transform.right * _speed;
+        // Adjust the velocity based on the direction
+        _rb.linearVelocity = new Vector2(direction * _speed, 0);
     }
 }
