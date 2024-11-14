@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; set; }
+
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private float _boostedSpeed = 5f; // Speed when boosted
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         _rb = GetComponent<Rigidbody2D>();
     }
 
