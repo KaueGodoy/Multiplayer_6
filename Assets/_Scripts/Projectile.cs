@@ -6,8 +6,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _destroyTime = 3f;
     [SerializeField] private float _damage = 3f;
 
-    public float Damage { get { return _damage; } set { _damage = value; } }
-
+    public float Damage
+    {
+        get => _damage;
+        set => _damage = value;
+    }
     private Rigidbody2D _rb;
 
     private void Awake()
