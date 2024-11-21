@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 1179082281}
   - component: {fileID: 1179082280}
   m_Layer: 3
-  m_Name: Tile (2)
+  m_Name: Boundaries
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 1815758923}
   - component: {fileID: 1815758922}
   m_Layer: 3
-  m_Name: Tile (1)
+  m_Name: Boundaries
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,10 +1128,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3425427380082805399, guid: c836b475883a8d4449f920bc50230546, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: b28148b6250b75442a8a4e2970bef492, type: 2}
     - target: {fileID: 4228216579787915900, guid: c836b475883a8d4449f920bc50230546, type: 3}
       propertyPath: _isGrounded
       value: 0
